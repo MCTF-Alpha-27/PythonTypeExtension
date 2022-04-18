@@ -1,5 +1,5 @@
 __author__ = "Jerry"
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 class NotComposedOfNumbersError(Exception):
     "不是由数字组成的字符串使用String对象的toInt()函数或toInteger()函数时抛出"
@@ -23,16 +23,16 @@ class String:
     def __add__(self, other):
         "当与一个字符串或另一个String对象进行加操作时调用"
         if type(other) is String:
-            return self.__str + other.__str
+            return String(self.__str + other.__str)
         else:
-            return self.__str + other
+            return String(self.__str + other)
 
     def __sub__(self, other):
         "当与一个字符串或另一个String对象进行减操作时调用"
         if type(other) is String:
-            return self.__str - other.__str
+            return String(self.__str - other.__str)
         else:
-            return self.__str - other
+            return String(self.__str - other)
 
     def isNumber(self):
         "判断字符串是否由数字组成，返回布尔值"
@@ -78,16 +78,16 @@ class Integer:
     def __add__(self, other):
         "当与一个整数或另一个Integer对象进行加操作时调用"
         if type(other) is Integer:
-            return self.__int + other.__int
+            return Integer(self.__int + other.__int)
         else:
-            return self.__int + other
+            return Integer(self.__int + other)
 
     def __sub__(self, other):
         "当与一个整数或另一个Integer对象进行减操作时调用"
         if type(other) is Integer:
-            return self.__int - other.__int
+            return Integer(self.__int - other.__int)
         else:
-            return self.__int - other
+            return Integer(self.__int - other)
 
     def toStr(self):
         "将整数转成字符串"
