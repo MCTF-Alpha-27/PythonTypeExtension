@@ -1,5 +1,5 @@
 __author__ = "Jerry"
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 
 class NotComposedOfNumbersError(Exception):
     "不是由数字组成的字符串使用String对象的toInt()函数或toInteger()函数时抛出"
@@ -33,6 +33,48 @@ class String:
             return String(self.__str - other.__str)
         else:
             return String(self.__str - other)
+
+    def __eq__(self, other) -> bool:
+        "等于判断"
+        if type(other) is String:
+            return self.__str == other.__str
+        else:
+            return self.__str == other
+
+    def __ne__(self, other) -> bool:
+        "不等于判断"
+        if type(other) is String:
+            return self.__str != other.__str
+        else:
+            return self.__str != other
+
+    def __lt__(self, other) -> bool:
+        "小于判断"
+        if type(other) is String:
+            return self.__str < other.__str
+        else:
+            return self.__str < other
+
+    def __gt__(self, other) -> bool:
+        "大于判断"
+        if type(other) is String:
+            return self.__str > other.__str
+        else:
+            return self.__str > other
+
+    def __le__(self, other) -> bool:
+        "小于等于判断"
+        if type(other) is String:
+            return self.__str <= other.__str
+        else:
+            return self.__str <= other
+
+    def __ge__(self, other) -> bool:
+        "大于等于判断"
+        if type(other) is String:
+            return self.__str >= other.__str
+        else:
+            return self.__str >= other
 
     def isNumber(self):
         "判断字符串是否由数字组成，返回布尔值"
@@ -88,6 +130,48 @@ class Integer:
             return Integer(self.__int - other.__int)
         else:
             return Integer(self.__int - other)
+
+    def __eq__(self, other) -> bool:
+        "等于判断"
+        if type(other) is Integer:
+            return self.__int == other.__int
+        else:
+            return self.__int == other
+
+    def __ne__(self, other) -> bool:
+        "不等于判断"
+        if type(other) is Integer:
+            return self.__int != other.__int
+        else:
+            return self.__int != other
+
+    def __lt__(self, other) -> bool:
+        "小于判断"
+        if type(other) is Integer:
+            return self.__int < other.__int
+        else:
+            return self.__int < other
+
+    def __gt__(self, other) -> bool:
+        "大于判断"
+        if type(other) is Integer:
+            return self.__int > other.__int
+        else:
+            return self.__int > other
+
+    def __le__(self, other) -> bool:
+        "小于等于判断"
+        if type(other) is Integer:
+            return self.__int <= other.__int
+        else:
+            return self.__int <= other
+
+    def __ge__(self, other) -> bool:
+        "大于等于判断"
+        if type(other) is Integer:
+            return self.__int >= other.__int
+        else:
+            return self.__int >= other
 
     def toStr(self):
         "将整数转成字符串"
