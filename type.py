@@ -1,5 +1,5 @@
 __author__ = "Jerry"
-__version__ = "1.2.3"
+__version__ = "1.2.4"
 
 class NotComposedOfNumbersError(Exception):
     "不是由数字组成的字符串使用String对象的toInt()函数或toInteger()函数时抛出"
@@ -89,6 +89,37 @@ class String:
         else:
             return True
 
+    def isEven(self):
+        "判断数字是否是偶数，返回布尔值（前提是这个字符串是由数字组成的，否则抛出NotComposedOfNumbersError异常）"
+        if self.toInt() % 2 == 0:
+            return True
+        else:
+            return False
+
+    def isOdd(self):
+        "判断数字是否是奇数，返回布尔值（前提是这个字符串是由数字组成的，否则会出NotComposedOfNumbersError异常）"
+        if self.toInt() % 2 == 0:
+            return False
+        else:
+            return True
+
+    def hasSpace(self):
+        "判断字符串中是否存在空格，返回布尔值"
+        for i in self.__str:
+            if i == " ":
+                return True
+        return False
+
+    def replace(self, /, past, now):
+        "在前一个括号内填写字符串内要匹配的元素，后一个括号内填入要被替换成的元素，这样所有匹配的元素都会被替换为要被替换成的元素，最后返回String对象"
+        return String(self.__str.replace(past, now))
+
+    def subString(self, /, range1, range2=None):
+        "字符串切片。在前一个括号中填入起始索引值，后一个括号中填入结束索引值。若索引值超出了字符串范围，将会返回空字符串"
+        if range2 is None:
+            range2 = range1 + 1
+        return String(self.__str[range1:range2])
+
     def toInt(self):
         "如果能，将字符串转成整数，否则抛出NotComposedOfNumbersError异常"
         try:
@@ -176,6 +207,24 @@ class Integer:
             return self.__int >= other.__int
         else:
             return self.__int >= other
+
+    def isEven(self):
+        "判断数字是否是偶数，返回布尔值"
+        if self.__int % 2 == 0:
+            return True
+        else:
+            return False
+    
+    def isOdd(self):
+        "判断数字是否是奇数，返回布尔值"
+        if self.__int % 2 == 0:
+            return False
+        else:
+            return True
+
+    def replace(self, /, past, now):
+        "在前一个括号内填写字符串内要匹配的元素，后一个括号内填入要被替换成的元素，这样所有匹配的元素都会被替换为要被替换成的元素，最后返回Integer对象"
+        return Integer(int(self.toStr().replace(past, now)))
 
     def toStr(self):
         "将整数转成字符串"
