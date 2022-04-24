@@ -1,5 +1,5 @@
 __author__ = "Jerry"
-__version__ = "1.2.2"
+__version__ = "1.2.3"
 
 class NotComposedOfNumbersError(Exception):
     "不是由数字组成的字符串使用String对象的toInt()函数或toInteger()函数时抛出"
@@ -19,6 +19,10 @@ class String:
         return self.__str
 
     __str__ = __repr__
+
+    def __len__(self):
+        "使用len()函数时调用"
+        return self.length
 
     def __add__(self, other):
         "当与一个字符串或另一个String对象进行加操作时调用"
