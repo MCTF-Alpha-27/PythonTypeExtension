@@ -9,5 +9,7 @@ test = String("Hello World")
 print(test) # Hello World
 print(test.isNumber()) # False
 print(test.length) # 11
+print(test.hasSpace()) # True
+print(test.subString(0, 5)) # Hello
 ```
 你同样可以重写这些类，来为它们添加更多方法<br>
