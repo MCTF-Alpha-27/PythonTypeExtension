@@ -32,6 +32,7 @@ class String测试:
         b = a.replace("114", "")
         print(b, type(b))
         print(a.subString(0), a.subString(0, 3))
+        print(a.toList())
 
 class Integer测试:
     @staticmethod
