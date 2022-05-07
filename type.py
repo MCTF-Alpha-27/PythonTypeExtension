@@ -1,5 +1,8 @@
+"""
+对Python原版类型的扩展
+"""
 __author__ = "Jerry"
-__version__ = "1.2.4"
+__version__ = "1.2.5"
 
 class NotComposedOfNumbersError(Exception):
     "不是由数字组成的字符串使用String对象的toInt()函数或toInteger()函数时抛出"
@@ -119,6 +122,10 @@ class String:
         if range2 is None:
             range2 = range1 + 1
         return String(self.__str[range1:range2])
+
+    def toList(self):
+        "将字符串转换为列表"
+        return list(self.__str)
 
     def toInt(self):
         "如果能，将字符串转成整数，否则抛出NotComposedOfNumbersError异常"
