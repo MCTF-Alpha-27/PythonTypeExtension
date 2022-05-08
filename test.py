@@ -60,6 +60,7 @@ class Integer测试:
         print(a.isEven(), a.isOdd())
         b = a.replace("114", "")
         print(b, type(b))
+        print(a.isDivisible(114514), a.isDivisible(b))
 
 if __name__ == "__main__":
     String测试.基本测试()
