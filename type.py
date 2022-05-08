@@ -2,7 +2,7 @@
 对Python原版类型的扩展
 """
 __author__ = "Jerry"
-__version__ = "1.2.5"
+__version__ = "1.2.6"
 
 class NotComposedOfNumbersError(Exception):
     "不是由数字组成的字符串使用String对象的toInt()函数或toInteger()函数时抛出"
@@ -228,6 +228,13 @@ class Integer:
             return False
         else:
             return True
+
+    def isDivisible(self, number):
+        "判断数字是否能被某个数整除，返回布尔值"
+        if type(number) is Integer:
+            return self.__int % number.__int == 0
+        else:
+            return self.__int % number == 0
 
     def replace(self, /, past, now):
         "在前一个括号内填写字符串内要匹配的元素，后一个括号内填入要被替换成的元素，这样所有匹配的元素都会被替换为要被替换成的元素，最后返回Integer对象"
