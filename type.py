@@ -251,7 +251,7 @@ class Integer:
         return String(str(self.__int))
 
 class List:
-    "列表类型，是对Python原版列表的扩展"
+    "列表类型，是对Python原版列表的加强"
     def __init__(self, list_) -> None:
         if type(list_) is not list:
             raise TypeError(
