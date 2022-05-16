@@ -2,7 +2,7 @@
 对Python原版类型的扩展
 """
 __author__ = "Jerry"
-__version__ = "1.3.6"
+__version__ = "1.3.7"
 
 __all__ = ["String", "Integer", "List"]
 
@@ -84,6 +84,10 @@ class String:
             return self.__str >= other.__str
         else:
             return self.__str >= other
+
+    def getNormal(self):
+        "将扩展类型转为原版类型"
+        return self.__str
 
     def isNumber(self):
         "判断字符串是否由数字组成，返回布尔值"
@@ -217,6 +221,10 @@ class Integer:
         else:
             return self.__int >= other
 
+    def getNormal(self):
+        "将扩展类型转为原版类型"
+        return self.__int
+
     def isEven(self):
         "判断数字是否是偶数，返回布尔值"
         if self.__int % 2 == 0:
@@ -258,12 +266,16 @@ class List:
                 "请使用列表类型创建List对象"
             )
         self.__list = list_
-        self.length = len(list_)
+        self.length = len(list_) # 列表长度
 
     def __repr__(self) -> str:
         return "[%s]"%(", ".join(self.__list))
 
     __str__ = __repr__
+
+    def __len__(self):
+        "使用len()函数时调用"
+        return self.length
 
     def __add__(self, other):
         "当与一个整数或另一个List对象进行加操作时调用"
@@ -320,6 +332,10 @@ class List:
             return self.__list >= other.__list
         else:
             return self.__list >= other
+
+    def getNormal(self):
+        "将扩展类型转为原版类型"
+        return self.__list
 
     def toStrList(self):
         "如果列表包含整数，返回一个将整数转为字符串的列表"
