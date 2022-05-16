@@ -2,10 +2,12 @@
 对Python原版类型的扩展
 """
 __author__ = "Jerry"
-__version__ = "1.2.6"
+__version__ = "1.3.6"
+
+__all__ = ["String", "Integer", "List"]
 
 class NotComposedOfNumbersError(Exception):
-    "不是由数字组成的字符串使用String对象的toInt()函数或toInteger()函数时抛出"
+    "不是由数字组成的字符串使用某些方法时抛出"
     pass
 
 class String:
@@ -247,3 +249,114 @@ class Integer:
     def toString(self):
         "将整数转成String对象"
         return String(str(self.__int))
+
+class List:
+    "列表类型，是对Python原版列表的扩展"
+    def __init__(self, list_) -> None:
+        if type(list_) is not list:
+            raise TypeError(
+                "请使用列表类型创建List对象"
+            )
+        self.__list = list_
+        self.length = len(list_)
+
+    def __repr__(self) -> str:
+        return "[%s]"%(", ".join(self.__list))
+
+    __str__ = __repr__
+
+    def __add__(self, other):
+        "当与一个整数或另一个List对象进行加操作时调用"
+        if type(other) is List:
+            return List(self.__list + other.__list)
+        else:
+            return List(self.__list + other)
+
+    def __sub__(self, other):
+        "当与一个整数或另一个List对象进行减操作时调用"
+        if type(other) is List:
+            return List(self.__list - other.__list)
+        else:
+            return List(self.__list - other)
+
+    def __eq__(self, other) -> bool:
+        "等于判断"
+        if type(other) is List:
+            return self.__list == other.__list
+        else:
+            return self.__list == other
+
+    def __ne__(self, other) -> bool:
+        "不等于判断"
+        if type(other) is List:
+            return self.__list != other.__list
+        else:
+            return self.__list != other
+
+    def __lt__(self, other) -> bool:
+        "小于判断"
+        if type(other) is List:
+            return self.__list < other.__list
+        else:
+            return self.__list < other
+
+    def __gt__(self, other) -> bool:
+        "大于判断"
+        if type(other) is List:
+            return self.__list > other.__list
+        else:
+            return self.__list > other
+
+    def __le__(self, other) -> bool:
+        "小于等于判断"
+        if type(other) is List:
+            return self.__list <= other.__list
+        else:
+            return self.__list <= other
+
+    def __ge__(self, other) -> bool:
+        "大于等于判断"
+        if type(other) is List:
+            return self.__list >= other.__list
+        else:
+            return self.__list >= other
+
+    def toStrList(self):
+        "如果列表包含整数，返回一个将整数转为字符串的列表"
+        strList = []
+        for i in self.__list:
+            if i is int:
+                strList.append(str(i))
+            else:
+                strList.append(i)
+        return strList
+
+    def toIntList(self):
+        "如果列表包含字符串，返回一个将字符串转为整数的列表"
+        intList = []
+        for i in self.__list:
+            if i.isdigit():
+                intList.append(int(i))
+            else:
+                intList.append(i)
+        return intList
+
+    def toStringList(self):
+        "如果列表包含字符串，返回一个将字符串转为String对象的列表"
+        stringList = []
+        for i in self.__list:
+            if i is str:
+                stringList.append(String(i))
+            else:
+                stringList.append(i)
+        return stringList
+
+    def toIntegerList(self):
+        "如果列表包含整数，返回一个将整数转为Integer对象的列表"
+        integerList = []
+        for i in self.__list:
+            if i is int:
+                integerList.append(Integer(i))
+            else:
+                integerList.append(i)
+        return integerList
