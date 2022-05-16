@@ -62,6 +62,33 @@ class Integer测试:
         print(b, type(b))
         print(a.isDivisible(114514), a.isDivisible(b))
 
+class List测试:
+    @staticmethod
+    def 基本测试():
+        a = List(["a", "b", "c"])
+        b = ["a", "b"]
+        c = List(["1", "2", "3"])
+        print(a, b, c)
+        print(a + b, a + c, c + b)
+
+    @staticmethod
+    def 运算符测试():
+        a = List([1, 2, 3])
+        b = List([4, 5, 6])
+        c = List([1, 2, 3])
+        print(a == b, a == c, b == c)
+        print(a > b, a < b, a > c, a < c, b > c, b < c)
+        print(a != b, a != c, b != c)
+
+    @staticmethod
+    def 方法测试():
+        a = List(["1", "2", "3"])
+        print(a.length)
+        print(a.toIntList())
+        b = List([1, 2, 3])
+        print(b.length)
+        print(b.toStrList())
+
 if __name__ == "__main__":
     String测试.基本测试()
     String测试.运算符判断()
@@ -70,3 +97,7 @@ if __name__ == "__main__":
     Integer测试.基本测试()
     Integer测试.运算符判断()
     Integer测试.方法测试()
+
+    List测试.基本测试()
+    List测试.运算符测试()
+    List测试.方法测试()
