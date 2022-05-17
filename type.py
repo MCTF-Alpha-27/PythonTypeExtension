@@ -2,7 +2,7 @@
 对Python原版类型的扩展
 """
 __author__ = "Jerry"
-__version__ = "1.3.7"
+__version__ = "1.3.8"
 
 __all__ = ["String", "Integer", "List"]
 
@@ -269,7 +269,19 @@ class List:
         self.length = len(list_) # 列表长度
 
     def __repr__(self) -> str:
-        return "[%s]"%(", ".join(self.__list))
+        r = []
+        for i in self.__list:
+            if type(i) is str:
+                r.append("'%s'"%i)
+            elif type(i) is int:
+                r.append(str(i))
+            elif type(i) is String:
+                r.append("<Extension Type String '%s'>"%i.getNormal())
+            elif type(i) is Integer:
+                r.append("<Extension Type Integer %s>"%i.toStr())
+            elif type(i) is List:
+                r.append("<Extension Type List %s>"%i.getNormal())
+        return "[%s]"%(", ".join(r))
 
     __str__ = __repr__
 
@@ -341,7 +353,7 @@ class List:
         "如果列表包含整数，返回一个将整数转为字符串的列表"
         strList = []
         for i in self.__list:
-            if i is int:
+            if type(i) is int:
                 strList.append(str(i))
             else:
                 strList.append(i)
@@ -351,8 +363,9 @@ class List:
         "如果列表包含字符串，返回一个将字符串转为整数的列表"
         intList = []
         for i in self.__list:
-            if i.isdigit():
-                intList.append(int(i))
+            if type(i) is str:
+                if i.isdigit():
+                    intList.append(int(i))
             else:
                 intList.append(i)
         return intList
@@ -361,7 +374,7 @@ class List:
         "如果列表包含字符串，返回一个将字符串转为String对象的列表"
         stringList = []
         for i in self.__list:
-            if i is str:
+            if type(i) is str:
                 stringList.append(String(i))
             else:
                 stringList.append(i)
@@ -371,7 +384,7 @@ class List:
         "如果列表包含整数，返回一个将整数转为Integer对象的列表"
         integerList = []
         for i in self.__list:
-            if i is int:
+            if type(i) is int:
                 integerList.append(Integer(i))
             else:
                 integerList.append(i)
