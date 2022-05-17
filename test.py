@@ -33,6 +33,7 @@ class String测试:
         print(b, type(b))
         print(a.subString(0), a.subString(0, 3))
         print(a.toList())
+        print(a.getNormal())
 
 class Integer测试:
     @staticmethod
@@ -61,6 +62,7 @@ class Integer测试:
         b = a.replace("114", "")
         print(b, type(b))
         print(a.isDivisible(114514), a.isDivisible(b))
+        print(a.getNormal())
 
 class List测试:
     @staticmethod
@@ -83,11 +85,19 @@ class List测试:
     @staticmethod
     def 方法测试():
         a = List(["1", "2", "3"])
-        print(a.length)
-        print(a.toIntList())
         b = List([1, 2, 3])
-        print(b.length)
+        c = List([1, "2", "3", 4])
+        d = List(["a", List(["b"])])
+        print(a, a.length)
+        print(a.toIntList())
+        print(a.getNormal())
+        print(b, b.length)
         print(b.toStrList())
+        print(a.getNormal())
+        print(c, c.length)
+        print(c.toIntList(), c.toStrList())
+        print(c.toIntegerList(), c.toStringList())
+        print(d, d.length)
 
 if __name__ == "__main__":
     String测试.基本测试()
