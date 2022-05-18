@@ -2,7 +2,7 @@
 对Python原版类型的扩展
 """
 __author__ = "Jerry"
-__version__ = "1.3.8"
+__version__ = "1.3.2"
 
 __all__ = ["String", "Integer", "List"]
 
@@ -161,7 +161,7 @@ class Integer:
         self.__int = int_
 
     def __repr__(self) -> str:
-        return str(self.__int)
+        return self.toStr()
 
     __str__ = __repr__
 
@@ -378,7 +378,7 @@ class List:
                 stringList.append(String(i))
             else:
                 stringList.append(i)
-        return stringList
+        return List(stringList)
 
     def toIntegerList(self):
         "如果列表包含整数，返回一个将整数转为Integer对象的列表"
@@ -388,4 +388,4 @@ class List:
                 integerList.append(Integer(i))
             else:
                 integerList.append(i)
-        return integerList
+        return List(integerList)
