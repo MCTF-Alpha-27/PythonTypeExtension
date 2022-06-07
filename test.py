@@ -31,7 +31,7 @@ class String测试:
         print(a.hasSpace())
         b = a.replace("114", "")
         print(b, type(b))
-        print(a.subString(0), a.subString(0, 3))
+        print(a[0], a[0:3], type(a[0]))
         print(a.toList())
         print(a.getNormal())
 
