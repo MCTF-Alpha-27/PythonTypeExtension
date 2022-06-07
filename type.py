@@ -2,7 +2,7 @@
 对Python原版类型的扩展
 """
 __author__ = "Jerry"
-__version__ = "1.3.2"
+__version__ = "1.3.3"
 
 __all__ = ["String", "Integer", "List"]
 
@@ -10,7 +10,7 @@ class NotComposedOfNumbersError(Exception):
     "不是由数字组成的字符串使用某些方法时抛出"
     pass
 
-class String:
+class String(str):
     "字符串类，是对Python原版字符串的加强"
     def __init__(self, str_) -> None:
         if type(str_) is not str:
@@ -124,7 +124,7 @@ class String:
         return String(self.__str.replace(past, now))
 
     def subString(self, /, range1, range2=None):
-        "字符串切片。在前一个括号中填入起始索引值，后一个括号中填入结束索引值。若索引值超出了字符串范围，将会返回空字符串"
+        "字符串切片。在前一个括号中填入起始索引值，后一个括号中填入结束索引值，将会返回一个String对象。若索引值超出了字符串范围，将会返回空字符串。"
         if range2 is None:
             range2 = range1 + 1
         return String(self.__str[range1:range2])
@@ -151,7 +151,7 @@ class String:
                 "字符串不是由数字组成的"
             ) from e
 
-class Integer:
+class Integer(int):
     "整数类型，是对Python原版整数的加强"
     def __init__(self, int_) -> None:
         if type(int_) is not int:
@@ -258,7 +258,7 @@ class Integer:
         "将整数转成String对象"
         return String(str(self.__int))
 
-class List:
+class List(list):
     "列表类型，是对Python原版列表的加强"
     def __init__(self, list_) -> None:
         if type(list_) is not list:
