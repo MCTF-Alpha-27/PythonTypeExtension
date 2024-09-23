@@ -2,7 +2,7 @@
 对Python原版类型的扩展
 """
 __author__ = "Jerry"
-__version__ = "1.3.3"
+__version__ = "1.3.4"
 
 __all__ = ["String", "Integer", "List"]
 
@@ -11,7 +11,7 @@ class NotComposedOfNumbersError(Exception):
     pass
 
 class String(str):
-    "字符串类，是对Python原版字符串的加强"
+    "字符串类，是对Python原版字符串的扩展"
     def __init__(self, str_) -> None:
         if type(str_) is not str:
             raise TypeError(
@@ -19,11 +19,6 @@ class String(str):
             )
         self.__str = str_
         self.length = len(str_) # 字符串大小
-
-    def __repr__(self) -> str:
-        return self.__str
-
-    __str__ = __repr__
 
     def __len__(self):
         "使用len()函数时调用"
@@ -89,15 +84,6 @@ class String(str):
         "将扩展类型转为原版类型"
         return self.__str
 
-    def isNumber(self):
-        "判断字符串是否由数字组成，返回布尔值"
-        try:
-            int(self.__str)
-        except ValueError:
-            return False
-        else:
-            return True
-
     def isEven(self):
         "判断数字是否是偶数，返回布尔值（前提是这个字符串是由数字组成的，否则抛出NotComposedOfNumbersError异常）"
         if self.toInt() % 2 == 0:
@@ -152,18 +138,13 @@ class String(str):
             ) from e
 
 class Integer(int):
-    "整数类型，是对Python原版整数的加强"
+    "整数类型，是对Python原版整数的扩展"
     def __init__(self, int_) -> None:
         if type(int_) is not int:
             raise TypeError(
                 "请使用整数类型创建Integer对象"
             )
         self.__int = int_
-
-    def __repr__(self) -> str:
-        return self.toStr()
-
-    __str__ = __repr__
 
     def __add__(self, other):
         "当与一个整数或另一个Integer对象进行加操作时调用"
@@ -259,7 +240,7 @@ class Integer(int):
         return String(str(self.__int))
 
 class List(list):
-    "列表类型，是对Python原版列表的加强"
+    "列表类型，是对Python原版列表的扩展"
     def __init__(self, list_) -> None:
         if type(list_) is not list:
             raise TypeError(

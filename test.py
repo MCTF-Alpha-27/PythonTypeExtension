@@ -27,7 +27,7 @@ class String测试:
     @staticmethod
     def 方法测试():
         a = String("114514")
-        print(a.isNumber(), a.isEven(), a.isOdd())
+        print(a.isEven(), a.isOdd())
         print(a.hasSpace())
         b = a.replace("114", "")
         print(b, type(b))
